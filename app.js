@@ -52,7 +52,7 @@ app.post("/register", (request, response) => {
 
 app.post("/login", (request, response) => {
   const userName = request.body.username;
-  const password = request.body.password;
+  const password = md5(request.body.password);
   User.findOne({ email: userName }, (err, foundUser) => {
     if (err) {
       console.log(err);
